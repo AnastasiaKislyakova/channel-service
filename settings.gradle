@@ -1,0 +1,6 @@
+rootProject.name = 'channel-service'
+
+include 'channel-model'
+include 'service'
+include 'channel-client'
+

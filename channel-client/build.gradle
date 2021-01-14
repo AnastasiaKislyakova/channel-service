@@ -1,0 +1,34 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'io.spring.dependency-management'
+}
+
+version '0.0.1-SNAPSHOT'
+
+description = "channel-client"
+archivesBaseName = description
+
+sourceCompatibility = 1.8
+
+jar {
+    archiveBaseName = 'channel-client'
+}
+
+dependencies {
+    api project(":channel-model")
+    compile 'org.springframework.cloud:spring-cloud-openfeign-core:3.0.0'
+    api 'org.springframework:spring-webflux:5.3.3'
+    compile 'io.github.openfeign:feign-okhttp:11.0'
+    compile 'io.github.openfeign:feign-gson:11.0'
+
+}
+
+publishing {
+    publications {
+        bootJava(MavenPublication) {
+            artifact jar
+        }
+    }
+}
+project.tasks.publish.dependsOn jar
